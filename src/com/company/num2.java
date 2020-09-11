@@ -70,79 +70,19 @@ class TestDog {
     public void addDog(String name, int age) {
         this.dogs.add(new Dog(name, age));
     }
-}
 
-class Circle {
-    double radius;
-
-    public void setRadius(double radius) {
-        this.radius = radius;
+    public static void runTests() {
+        TestDog test = new TestDog();
+        test.addDog("some_name", 3);
+        assert !test.dogs.isEmpty();
+        assert test.dogs.get(0).name.equals("some_name");
+        assert test.dogs.get(0).age == 3;
     }
-
-    public double getRadius() {
-        return radius;
-    }
-
-    public Circle(double radius) {
-        this.radius = radius;
-    }
-
-    public double getArea() {
-        return Math.PI * Math.pow(radius, 2);
-    }
-
-    public double getLength() {
-        return 2 * Math.PI * radius;
-    }
-}
-
-
-class CircleTest {
-
-    public static void main(String[] args) {
-        test_initialize();
-        test_radius_getter();
-        test_radius_setter();
-        test_getArea();
-        test_getLength();
-        System.out.println("SUCCESS");
-    }
-
-    private static Circle getCircle(double r) {
-        return new Circle(r);
-    }
-
-    public static void test_initialize() {
-        Circle test = getCircle(10.7);
-        assert test.radius == 10.7;
-    }
-
-    public static void test_radius_getter() {
-        Circle test = getCircle(10.7);
-        assert test.getRadius() == test.radius;
-    }
-
-    public static void test_radius_setter() {
-        Circle test = getCircle(10.7);
-        test.setRadius(20.7);
-        assert test.radius == 20.7;
-    }
-
-    public static void test_getArea() {
-        Circle test = getCircle(10.7);
-        assert test.getArea() == test.radius * test.radius * Math.PI;
-    }
-
-    public static void test_getLength() {
-        Circle test = getCircle(10.7);
-        assert test.getArea() == test.radius * 2 * Math.PI;
-    }
-
 }
 
 
 public class num2 {
     public static void main(String[] args) {
-        CircleTest.main(args);
+        new TestDog();
     }
 }
